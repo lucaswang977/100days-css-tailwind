@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import Day1 from "./days/day1";
 import Day2 from "./days/day2";
+import Day3 from "./days/day3";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <div className={clsx("flex gap-2")}>
         <Day1 />
         <Day2 />
+        <Day3 />
       </div>
     </main>
   );

@@ -84,28 +84,7 @@ const keyframes = `
 }
 `;
 
-const Line = ({
-  className,
-  ...rest
-}: React.ComponentPropsWithoutRef<'div'>) => {
-  return (
-    <div
-      className={cn(
-        className,
-        'h-[var(--line-height)] w-[var(--line-width)]',
-        'bg-white',
-        'rounded-lg',
-        'shadow-[0px_2px_10px_0px_rgba(0,0,0,0.3)]',
-        'mb-[var(--line-space)]',
-      )}
-      {...rest}
-    />
-  );
-};
-
-const Day2 = () => {
-  const [open, setOpen] = React.useState<undefined | boolean>();
-
+const Day3 = () => {
   return (
     <div
       style={cssVariables as React.CSSProperties}
@@ -113,42 +92,11 @@ const Day2 = () => {
         'flex items-center justify-center',
         'h-[400px] w-[400px]',
         'rounded-sm',
-        'bg-[#3FAF82]',
+        'bg-[#272C34]',
         'shadow-[1px_2px_10px_0px_rgba(0,0,0,0.3)]',
       )}
-    >
-      <div
-        className="flex h-[var(--icon-height)] cursor-pointer flex-col"
-        onClick={() =>
-          setOpen((v) => {
-            if (v === undefined) return false;
-            else return !v;
-          })
-        }
-      >
-        <style> {keyframes} </style>
-        {open === true ? (
-          <>
-            <Line className="animate-[line1-exit_0.7s_ease-in-out_forwards]" />
-            <Line className="animate-[line2-exit_0.7s_ease-in-out_forwards]" />
-            <Line className="animate-[line3-exit_0.7s_ease-in-out_forwards]" />
-          </>
-        ) : open === false ? (
-          <>
-            <Line className="animate-[line1-enter_0.7s_ease-in-out_forwards]" />
-            <Line className="animate-[line2-enter_0.7s_ease-in-out_forwards]" />
-            <Line className="animate-[line3-enter_0.7s_ease-in-out_forwards]" />
-          </>
-        ) : (
-          <>
-            <Line />
-            <Line />
-            <Line />
-          </>
-        )}
-      </div>
-    </div>
+    ></div>
   );
 };
 
-export default Day2;
+export default Day3;
