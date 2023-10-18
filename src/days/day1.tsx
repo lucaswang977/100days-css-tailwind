@@ -75,15 +75,14 @@ const Day1 = () => {
       <span
         className={cn(
           "uppercase",
-          "leading-[60px]",
-          "text-[82px]",
+          "text-[82px] leading-[60px]",
           "font-[700]",
           "mt-[6px]",
         )}
       >
         Days
       </span>
-      <span className="text-[23px] font-[700] uppercase leading-[20px] tracking-[0.04em]">
+      <span className="text-[23px] font-[700] uppercase leading-3 tracking-[0.04em]">
         CSS Challenge
       </span>
     </div>

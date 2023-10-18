@@ -42,9 +42,44 @@ const keyframes = `
   50% {
     transform: translate3d(0, calc(0px - var(--line-height) - var(--line-space)), 0) rotate(0);
   }
-
   100% {
     transform: translate3d(0, calc(0px - var(--line-height) - var(--line-space)), 0) rotate(135deg);
+  }
+}
+
+@keyframes line1-exit {
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(0, calc(var(--line-height) + var(--line-space)), 0) rotate(0);
+  }
+  0% {
+    transform: translate3d(0, calc(var(--line-height) + var(--line-space)), 0) rotate(45deg);
+  }
+}
+
+
+@keyframes line2-exit {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes line3-exit {
+  0% {
+    transform: translate3d(0, calc(0px - var(--line-height) - var(--line-space)), 0) rotate(135deg);
+  }
+  50% {
+    transform: translate3d(0, calc(0px - var(--line-height) - var(--line-space)), 0) rotate(0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
   }
 }
 `;
@@ -69,6 +104,8 @@ const Line = ({
 };
 
 const Day2 = () => {
+  const [open, setOpen] = React.useState<undefined | boolean>();
+
   return (
     <div
       style={cssVariables as React.CSSProperties}
@@ -80,11 +117,35 @@ const Day2 = () => {
         "shadow-[1px_2px_10px_0px_rgba(0,0,0,0.3)]",
       )}
     >
-      <div className="flex h-[var(--icon-height)] cursor-pointer flex-col">
+      <div
+        className="flex h-[var(--icon-height)] cursor-pointer flex-col"
+        onClick={() =>
+          setOpen((v) => {
+            if (v === undefined) return false;
+            else return !v;
+          })
+        }
+      >
         <style> {keyframes} </style>
-        <Line className="animate-[line1-enter_1s_ease-in-out_infinite]" />
-        <Line className="animate-[line2-enter_1s_ease-in-out_infinite]" />
-        <Line className="animate-[line3-enter_1s_ease-in-out_infinite]" />
+        {open === true ? (
+          <>
+            <Line className="animate-[line1-exit_0.7s_ease-in-out_forwards]" />
+            <Line className="animate-[line2-exit_0.7s_ease-in-out_forwards]" />
+            <Line className="animate-[line3-exit_0.7s_ease-in-out_forwards]" />
+          </>
+        ) : open === false ? (
+          <>
+            <Line className="animate-[line1-enter_0.7s_ease-in-out_forwards]" />
+            <Line className="animate-[line2-enter_0.7s_ease-in-out_forwards]" />
+            <Line className="animate-[line3-enter_0.7s_ease-in-out_forwards]" />
+          </>
+        ) : (
+          <>
+            <Line />
+            <Line />
+            <Line />
+          </>
+        )}
       </div>
     </div>
   );
