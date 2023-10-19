@@ -1,7 +1,8 @@
-import clsx from "clsx";
-import Day1 from "./days/day1";
-import Day2 from "./days/day2";
-import Day3 from "./days/day3";
+import clsx from 'clsx';
+
+import Day1 from './days/day1';
+import Day2 from './days/day2';
+import Day3 from './days/day3';
 
 function App() {
   return (
@@ -9,7 +10,7 @@ function App() {
       <p className="mb-4 text-xl">
         100 Days CSS Challenge implemented using Tailwind CSS
       </p>
-      <div className={clsx("flex gap-2")}>
+      <div className={clsx('flex gap-2')}>
         <Day1 />
         <Day2 />
         <Day3 />
