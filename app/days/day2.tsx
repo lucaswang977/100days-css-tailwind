@@ -1,13 +1,14 @@
 // https://100dayscss.com/days/2/
+"use client"
 
-import { cn } from '@helper/utils';
-import * as React from 'react';
+import { cn } from "@/helper/utils";
+import * as React from "react";
 
 const cssVariables = {
-  '--line-height': '8px',
-  '--line-width': '80px',
-  '--line-space': '14px',
-  '--icon-height': 'calc(3*var(--line-height)+2*var(--line-space))',
+  "--line-height": "8px",
+  "--line-width": "80px",
+  "--line-space": "14px",
+  "--icon-height": "calc(3*var(--line-height)+2*var(--line-space))",
 };
 
 const keyframes = `
@@ -87,16 +88,16 @@ const keyframes = `
 const Line = ({
   className,
   ...rest
-}: React.ComponentPropsWithoutRef<'div'>) => {
+}: React.ComponentPropsWithoutRef<"div">) => {
   return (
     <div
       className={cn(
         className,
-        'h-[var(--line-height)] w-[var(--line-width)]',
-        'bg-white',
-        'rounded-lg',
-        'shadow-[0px_2px_10px_0px_rgba(0,0,0,0.3)]',
-        'mb-[var(--line-space)]',
+        "h-[var(--line-height)] w-[var(--line-width)]",
+        "bg-white",
+        "rounded-lg",
+        "shadow-[0px_2px_10px_0px_rgba(0,0,0,0.3)]",
+        "mb-[var(--line-space)]",
       )}
       {...rest}
     />
@@ -110,11 +111,11 @@ const Day2 = () => {
     <div
       style={cssVariables as React.CSSProperties}
       className={cn(
-        'flex items-center justify-center',
-        'h-[400px] w-[400px]',
-        'rounded-sm',
-        'bg-[#3FAF82]',
-        'shadow-[1px_2px_10px_0px_rgba(0,0,0,0.3)]',
+        "flex items-center justify-center",
+        "h-[400px] w-[400px]",
+        "rounded-sm",
+        "bg-[#3FAF82]",
+        "shadow-[1px_2px_10px_0px_rgba(0,0,0,0.3)]",
       )}
     >
       <div
