@@ -1,8 +1,8 @@
 // https://100dayscss.com/days/3/
 
-import { cn } from "@/helper/utils";
+import { cn } from "@/helper/utils"
 
-const keyframes = `
+const dangerouslyStyles = `
 @keyframes sun-goes-down {
   0% {
 		background: #F57209;
@@ -102,7 +102,7 @@ const keyframes = `
     background: #272C34;
   }
 }
-`;
+`
 
 const Day3 = () => {
   return (
@@ -115,7 +115,7 @@ const Day3 = () => {
         "shadow-[1px_2px_10px_0px_rgba(0,0,0,0.3)]",
       )}
     >
-      <style> {keyframes} </style>
+      <style dangerouslySetInnerHTML={{ __html: dangerouslyStyles }} />
       <div
         id="circle"
         className={cn(
@@ -200,7 +200,7 @@ const Day3 = () => {
         />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Day3;
+export default Day3

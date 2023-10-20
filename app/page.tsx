@@ -1,7 +1,7 @@
-import Day1 from "@/days/day1";
-import Day2 from "@/days/day2";
-import Day3 from "@/days/day3";
-import { cn } from "@/helper/utils";
+import Day1 from "@/days/day1"
+import Day2 from "@/days/day2"
+import Day3 from "@/days/day3"
+import { cn } from "@/helper/utils"
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
         <Day3 />
       </div>
     </main>
-  );
+  )
 }
 
-export default App;
+export default App

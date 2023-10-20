@@ -1,17 +1,17 @@
 // https://100dayscss.com/days/2/
 "use client"
 
-import { cn } from "@/helper/utils";
-import * as React from "react";
+import { cn } from "@/helper/utils"
+import * as React from "react"
 
-const cssVariables = {
-  "--line-height": "8px",
-  "--line-width": "80px",
-  "--line-space": "14px",
-  "--icon-height": "calc(3*var(--line-height)+2*var(--line-space))",
-};
+const dangerouslyStyles = `
+:root {
+  --line-height: 8px;
+  --line-width: 80px;
+  --line-space: 14px;
+  --icon-height: calc(3*var(--line-height)+2*var(--line-space));
+}
 
-const keyframes = `
 @keyframes line1-enter {
   0% {
     transform: translate3d(0, 0, 0) rotate(0deg);
@@ -83,7 +83,7 @@ const keyframes = `
     transform: translate3d(0, 0, 0) rotate(0deg);
   }
 }
-`;
+`
 
 const Line = ({
   className,
@@ -101,15 +101,14 @@ const Line = ({
       )}
       {...rest}
     />
-  );
-};
+  )
+}
 
 const Day2 = () => {
-  const [open, setOpen] = React.useState<undefined | boolean>();
+  const [open, setOpen] = React.useState<undefined | boolean>()
 
   return (
     <div
-      style={cssVariables as React.CSSProperties}
       className={cn(
         "flex items-center justify-center",
         "h-[400px] w-[400px]",
@@ -118,16 +117,16 @@ const Day2 = () => {
         "shadow-[1px_2px_10px_0px_rgba(0,0,0,0.3)]",
       )}
     >
+      <style dangerouslySetInnerHTML={{ __html: dangerouslyStyles }} />
       <div
         className="flex h-[var(--icon-height)] cursor-pointer flex-col"
         onClick={() =>
           setOpen((v) => {
-            if (v === undefined) return false;
-            else return !v;
+            if (v === undefined) return false
+            else return !v
           })
         }
       >
-        <style> {keyframes} </style>
         {open === true ? (
           <>
             <Line className="animate-[line1-exit_0.7s_ease-in-out_forwards]" />
@@ -149,7 +148,7 @@ const Day2 = () => {
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Day2;
+export default Day2
