@@ -15,6 +15,63 @@ const Line = ({
   return <div className={cn("h-[1px] w-full", "bg-[#F2F2F2]")} {...rest}></div>
 }
 
+const Polyline = ({
+  points,
+  color,
+  className,
+}: {
+  points: { x: number; y: number; v: number }[]
+  color: string
+} & React.ComponentPropsWithoutRef<"div">) => {
+  return (
+    <div className={cn("absolute inset-0", className)}>
+      <svg>
+        <polyline
+          points={points.map((i) => `${i.x},${i.y}`).join(" ")}
+          stroke={color}
+          fill="none"
+          strokeWidth="2"
+          strokeLinecap="round"
+        />
+      </svg>
+      {points.map((point) => {
+        return (
+          <div
+            key={`${point.x}-${point.y}`}
+            style={{
+              background: color,
+              transform: `translate(${point.x - 3}px, ${point.y - 3}px)`,
+            }}
+            className={cn(
+              "absolute left-0 top-0 z-20",
+              "h-[6px] w-[6px]",
+              "rounded-full",
+              "cursor-pointer",
+            )}
+          >
+            <div
+              style={{
+                background: color,
+                transform: `translate(${point.x - 3}px, ${point.y - 3}px)`,
+              }}
+              className={cn(
+                "absolute",
+                "text-[11px] text-[600] text-white",
+                "after:content-[' '] after:absolute after:h-[6px] after:w-[6px] ",
+                "after:-bottom-[3px] after:left-[50%] after:-ml-[3px] after:rotate-45",
+                "px-[8px] py-[6px]",
+                "rounded-xs",
+              )}
+            >
+              {point.v}
+            </div>
+          </div>
+        )
+      })}
+    </div>
+  )
+}
+
 const ParameterSpan = ({
   className,
   children,
@@ -100,11 +157,35 @@ const Day5 = () => {
         <div
           id="statistic"
           className={cn(
-            "flex flex-col",
+            "relative",
             "h-[81px] w-[260px]",
-            "items-center justify-between",
+            "flex flex-col justify-between",
           )}
         >
+          <Polyline
+            color="#FA7373"
+            points={[
+              { x: 9, y: 46, v: 458 },
+              { x: 50, y: 12, v: 812 },
+              { x: 90, y: 23, v: 746 },
+              { x: 130, y: 11, v: 877 },
+              { x: 171, y: 38, v: 517 },
+              { x: 211, y: 48, v: 434 },
+              { x: 251, y: 19, v: 458 },
+            ]}
+          />
+          <Polyline
+            color="#7BA2FF"
+            points={[
+              { x: 9, y: 61, v: 26 },
+              { x: 50, y: 50, v: 41 },
+              { x: 90, y: 65, v: 22 },
+              { x: 130, y: 55, v: 36 },
+              { x: 171, y: 61, v: 25 },
+              { x: 211, y: 74, v: 13 },
+              { x: 251, y: 64, v: 20 },
+            ]}
+          />
           <Line />
           <Line />
           <Line />
