@@ -43,6 +43,7 @@ const Polyline = ({
               transform: `translate(${point.x - 3}px, ${point.y - 3}px)`,
             }}
             className={cn(
+              "group",
               "absolute left-0 top-0 z-20",
               "h-[6px] w-[6px]",
               "rounded-full",
@@ -52,17 +53,28 @@ const Polyline = ({
             <div
               style={{
                 background: color,
-                transform: `translate(${point.x - 3}px, ${point.y - 3}px)`,
               }}
               className={cn(
                 "absolute",
                 "text-[11px] text-[600] text-white",
-                "after:content-[' '] after:absolute after:h-[6px] after:w-[6px] ",
-                "after:-bottom-[3px] after:left-[50%] after:-ml-[3px] after:rotate-45",
                 "px-[8px] py-[6px]",
-                "rounded-xs",
+                "invisible rounded-sm opacity-0",
+                "-translate-x-[43%] -translate-y-[80%]",
+                "group-hover:visible group-hover:-translate-y-[120%] group-hover:opacity-100",
+                "transition-all duration-[400ms]",
               )}
             >
+              <div
+                style={{
+                  background: color,
+                }}
+                className={cn(
+                  "absolute",
+                  "h-[6px] w-[6px]",
+                  "rotate-45",
+                  "left-[40%] top-[90%]",
+                )}
+              />
               {point.v}
             </div>
           </div>
