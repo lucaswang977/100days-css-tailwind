@@ -3,6 +3,7 @@ import Day2 from "@/days/day2"
 import Day3 from "@/days/day3"
 import Day4 from "@/days/day4"
 import Day5 from "@/days/day5"
+import Day6 from "@/days/day6"
 import { cn } from "@/helper/utils"
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Day3 />
         <Day4 />
         <Day5 />
+        <Day6 />
       </div>
     </main>
   )
