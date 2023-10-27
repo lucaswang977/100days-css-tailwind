@@ -1,7 +1,7 @@
 // https://100dayscss.com/days/1/
 
-import { cn } from "@/helper/utils";
-import React from "react";
+import { cn } from "@/helper/utils"
+import React from "react"
 
 const BigZero = ({
   className,
@@ -21,8 +21,8 @@ const BigZero = ({
         {...rest}
       ></div>
     </>
-  );
-};
+  )
+}
 
 const BigOne = ({
   className,
@@ -52,8 +52,8 @@ const BigOne = ({
         )}
       />
     </div>
-  );
-};
+  )
+}
 
 const Day1 = () => {
   return (
@@ -86,7 +86,7 @@ const Day1 = () => {
         CSS Challenge
       </span>
     </div>
-  );
-};
+  )
+}
 
-export default Day1;
+export default Day1

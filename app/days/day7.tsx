@@ -9,6 +9,40 @@ const openSans = Open_Sans({
   weight: ["400", "600"],
 })
 
+const Notification = ({
+  className,
+  children,
+  time,
+  ...rest
+}: { time: string } & React.ComponentPropsWithoutRef<"div">) => {
+  return (
+    <div
+      className={cn(
+        className,
+        "relative",
+        "z-20",
+        "mb-[25px] ml-[43px] mr-[20px] mt-[25px]",
+        "p-0",
+      )}
+      {...rest}
+    >
+      <p className="mb-[2px] text-[11px] leading-[11px]">{time}</p>
+      <p className="text-[15px] leading-[20px]">{children}</p>
+      <div
+        id="circle"
+        className={cn(
+          "absolute",
+          "h-[11px] w-[11px]",
+          "bg-white",
+          "rounded-full border-[2px] border-solid border-[#5F98CD]",
+          "-left-[20px] top-0",
+          "shadow-[0px_0px_0px_3px_rgba(255,255,255,1)]",
+        )}
+      />
+    </div>
+  )
+}
+
 const Day7 = () => {
   return (
     <div
@@ -93,7 +127,12 @@ const Day7 = () => {
             />
           </div>
         </div>
-        <div id="notifications" className={cn("grow")}></div>
+        <div id="notifications" className={cn("relative grow")}>
+          <div className="absolute bottom-0 left-[27px] top-0 z-0 w-[3px] bg-[#EBEBEB]" />
+          <Notification time="9:24 AM">
+            <b>John Walker</b> posted a photo on your wall.
+          </Notification>
+        </div>
       </div>
     </div>
   )
