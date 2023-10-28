@@ -132,6 +132,14 @@ const Day7 = () => {
           <Notification time="9:24 AM">
             <b>John Walker</b> posted a photo on your wall.
           </Notification>
+
+          <Notification time="8:19 AM">
+            <b>Alice Parker</b> commented your last post.
+          </Notification>
+
+          <Notification time="Yesterday">
+            <b>Luke Wayne</b> added you as friend.
+          </Notification>
         </div>
       </div>
     </div>
