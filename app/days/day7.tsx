@@ -1,8 +1,12 @@
 // https://100dayscss.com/days/7/
 
+"use client"
+
 import { cn } from "@/helper/utils"
 import { Open_Sans } from "next/font/google"
-import { FaSearch } from "react-icons/fa"
+import * as React from "react"
+import { FaHome, FaSearch } from "react-icons/fa"
+import { FaBell, FaComments, FaGear, FaUser } from "react-icons/fa6"
 
 const openSans = Open_Sans({
   subsets: ["latin"],
@@ -44,10 +48,14 @@ const Notification = ({
 }
 
 const Day7 = () => {
+  const [showSearchBar, setShowSearchBar] = React.useState(false)
+  const [showNavbar, setShowNavbar] = React.useState(false)
+
   return (
     <div
       className={cn(
         openSans.className,
+        "relative",
         "flex items-center justify-center",
         "h-[400px] w-[400px]",
         "rounded-sm",
@@ -70,7 +78,7 @@ const Day7 = () => {
         <div
           id="header"
           className={cn(
-            "flex items-center justify-between",
+            "relative flex items-center justify-between",
             "h-[60px] w-full",
             "bg-[#5F98CD]",
             "px-4",
@@ -83,7 +91,10 @@ const Day7 = () => {
               xmlns="http://www.w3.org/2000/svg"
             >
               <line
-                className="stroke-[#B2DAFF] transition-colors duration-200 ease-in-out group-hover:stroke-white"
+                className={cn(
+                  "stroke-[#B2DAFF] transition-colors",
+                  "duration-200 ease-in-out group-hover:stroke-white",
+                )}
                 x1="00"
                 y1="40"
                 x2="30"
@@ -95,10 +106,16 @@ const Day7 = () => {
                 cx="44"
                 cy="40"
                 r="6"
-                className="fill-[#B2DAFF] transition-colors duration-200 ease-in-out group-hover:fill-white"
+                className={cn(
+                  "fill-[#B2DAFF] transition-colors",
+                  "duration-200 ease-in-out group-hover:fill-white",
+                )}
               />
               <line
-                className="stroke-[#B2DAFF] transition-colors duration-200 ease-in-out group-hover:stroke-white"
+                className={cn(
+                  "stroke-[#B2DAFF] transition-colors",
+                  "duration-200 ease-in-out group-hover:stroke-white",
+                )}
                 x1="00"
                 y1="60"
                 x2="50"
@@ -118,7 +135,11 @@ const Day7 = () => {
           >
             Notifications
           </div>
-          <div id="search-icon" className="group cursor-pointer">
+          <div
+            id="search-icon"
+            onClick={() => setShowSearchBar((v) => !v)}
+            className="group cursor-pointer"
+          >
             <FaSearch
               className={cn(
                 "text-[#B2DAFF] group-hover:text-white",
@@ -126,6 +147,26 @@ const Day7 = () => {
               )}
             />
           </div>
+          <input
+            id="search-bar"
+            placeholder="Search ..."
+            className={cn(
+              "absolute z-20",
+              "flex",
+              "right-[55px] top-[14px]",
+              "h-[34px] w-[230px]",
+              "px-[17px] py-0",
+              "text-[13px] text-[#999999]",
+              "rounded-3xl border-none",
+              "bg-white",
+              "cursor-text",
+              "outline-none",
+              "transition-all duration-300 ease-in-out",
+              showSearchBar
+                ? "translate-x-0 opacity-100"
+                : "translate-x-2 opacity-0",
+            )}
+          />
         </div>
         <div id="notifications" className={cn("relative grow")}>
           <div className="absolute bottom-0 left-[27px] top-0 z-0 w-[3px] bg-[#EBEBEB]" />
@@ -141,6 +182,39 @@ const Day7 = () => {
             <b>Luke Wayne</b> added you as friend.
           </Notification>
         </div>
+      </div>
+      <div
+        className={cn(
+          "absolute z-30",
+          "h-[270px] w-[170px]",
+          "left-[50px] top-[65px]",
+          "bg-[#43627D]",
+          "rounded-sm",
+          "shadow-[5px_5px_8px_0px_rgba(0,0,0,0.2)]",
+        )}
+      >
+        <ul>
+          <li className="flex items-center gap-2">
+            <FaHome />
+            Dashboard
+          </li>
+          <li className="flex items-center gap-2">
+            <FaUser />
+            Profile
+          </li>
+          <li className="flex items-center gap-2">
+            <FaBell />
+            Notifications
+          </li>
+          <li className="flex items-center gap-2">
+            <FaComments />
+            Messages
+          </li>
+          <li className="flex items-center gap-2">
+            <FaGear />
+            Settings
+          </li>
+        </ul>
       </div>
     </div>
   )
