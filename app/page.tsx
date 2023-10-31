@@ -1,3 +1,5 @@
+"use client"
+
 import Day1 from "@/days/day1"
 import Day2 from "@/days/day2"
 import Day3 from "@/days/day3"
@@ -6,6 +8,9 @@ import Day5 from "@/days/day5"
 import Day6 from "@/days/day6"
 import Day7 from "@/days/day7"
 import { cn } from "@/helper/utils"
+import * as React from "react"
+
+const Days = [Day1, Day2, Day3, Day4, Day5, Day6, Day7]
 
 function App() {
   return (
@@ -14,13 +19,17 @@ function App() {
         100 Days CSS Challenge implemented using Tailwind CSS
       </p>
       <div className={cn("flex basis-1/3 flex-wrap gap-2", "mx-2")}>
-        <Day1 />
-        <Day2 />
-        <Day3 />
-        <Day4 />
-        <Day5 />
-        <Day6 />
-        <Day7 />
+        {Days.map((item, index) => {
+          return (
+            <div
+              key={index}
+              className="flex flex-col items-center justify-center gap-1"
+            >
+              {item()}
+              <p>Day {index + 1}</p>
+            </div>
+          )
+        })}
       </div>
     </main>
   )
