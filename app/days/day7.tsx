@@ -8,10 +8,44 @@ import * as React from "react"
 import { FaHome, FaSearch } from "react-icons/fa"
 import { FaBell, FaComments, FaGear, FaUser } from "react-icons/fa6"
 
+const dangerouslyStyles = `
+@keyframes here-am-i {
+	from {
+		transform: translate3d(0,50px,0);
+		opacity: 0;
+	}
+	to {
+		transform: translate3d(0,0,0);
+		opacity: 1;
+	}
+}
+`
+
 const openSans = Open_Sans({
   subsets: ["latin"],
   weight: ["400", "600"],
 })
+
+const HoverableLi = ({
+  className,
+  children,
+  ...rest
+}: React.ComponentPropsWithoutRef<"li">) => {
+  return (
+    <li
+      className={cn(
+        className,
+        "m-0 flex items-center gap-2 px-[17px] py-[18px]",
+        "transition-all duration-300 ease-in-out",
+        "cursor-pointer",
+        "hover:bg-[#385269] hover:text-white",
+      )}
+      {...rest}
+    >
+      {children}
+    </li>
+  )
+}
 
 const Notification = ({
   className,
@@ -27,6 +61,9 @@ const Notification = ({
         "z-20",
         "mb-[25px] ml-[43px] mr-[20px] mt-[25px]",
         "p-0",
+        "transition-all duration-300 ease-in-out",
+        "hover:text-[#5F98CD]",
+        "cursor-pointer",
       )}
       {...rest}
     >
@@ -61,18 +98,22 @@ const Day7 = () => {
         "rounded-sm",
         "text-[#786450]",
         "bg-[#264057]",
+        "overflow-hidden",
         "shadow-[1px_2px_10px_0px_rgba(0,0,0,0.3)]",
       )}
     >
       <div
         id="panel"
         className={cn(
+          "z-20",
           "flex flex-col",
           "h-[300px] w-[300px]",
           "bg-white",
           "rounded-sm",
           "overflow-hidden",
           "shadow-[10px_10px_15px_0px_rgba(0,0,0,0.3)]",
+          "transition-all duration-500 ease-in-out",
+          showNavbar ? "translate-x-[150px]" : "translate-x-0",
         )}
       >
         <div
@@ -84,7 +125,11 @@ const Day7 = () => {
             "px-4",
           )}
         >
-          <div id="menu-icon" className="group cursor-pointer">
+          <div
+            id="menu-icon"
+            onClick={() => setShowNavbar((v) => !v)}
+            className="group cursor-pointer"
+          >
             <svg
               className="h-[50px] w-[50px]"
               viewBox="0 0 100 100"
@@ -159,61 +204,72 @@ const Day7 = () => {
               "text-[13px] text-[#999999]",
               "rounded-3xl border-none",
               "bg-white",
-              "cursor-text",
               "outline-none",
               "transition-all duration-300 ease-in-out",
               showSearchBar
-                ? "translate-x-0 opacity-100"
-                : "translate-x-2 opacity-0",
+                ? "pointer-events-auto translate-x-0 opacity-100"
+                : "pointer-events-none translate-x-2 opacity-0",
             )}
           />
         </div>
         <div id="notifications" className={cn("relative grow")}>
+          <style dangerouslySetInnerHTML={{ __html: dangerouslyStyles }} />
           <div className="absolute bottom-0 left-[27px] top-0 z-0 w-[3px] bg-[#EBEBEB]" />
-          <Notification time="9:24 AM">
+          <Notification
+            time="9:24 AM"
+            className="animate-[here-am-i_0.5s_ease-out_both_0.4s]"
+          >
             <b>John Walker</b> posted a photo on your wall.
           </Notification>
 
-          <Notification time="8:19 AM">
+          <Notification
+            time="8:19 AM"
+            className="animate-[here-am-i_0.5s_ease-out_both_0.6s]"
+          >
             <b>Alice Parker</b> commented your last post.
           </Notification>
 
-          <Notification time="Yesterday">
+          <Notification
+            time="Yesterday"
+            className="animate-[here-am-i_0.5s_ease-out_both_0.8s]"
+          >
             <b>Luke Wayne</b> added you as friend.
           </Notification>
         </div>
       </div>
       <div
         className={cn(
-          "absolute z-30",
+          "absolute z-0",
           "h-[270px] w-[170px]",
           "left-[50px] top-[65px]",
           "bg-[#43627D]",
           "rounded-sm",
           "shadow-[5px_5px_8px_0px_rgba(0,0,0,0.2)]",
+          "transition-all duration-500 ease-in-out",
+          showNavbar ? "translate-x-0" : "translate-x-10",
         )}
       >
-        <ul>
-          <li className="flex items-center gap-2">
+        <ul className="list-none py-[10px] text-[14px] leading-[14px] text-[#93B2CD]">
+          <HoverableLi>
             <FaHome />
             Dashboard
-          </li>
-          <li className="flex items-center gap-2">
+          </HoverableLi>
+          <HoverableLi>
             <FaUser />
             Profile
-          </li>
-          <li className="flex items-center gap-2">
+          </HoverableLi>
+          <HoverableLi>
             <FaBell />
             Notifications
-          </li>
-          <li className="flex items-center gap-2">
+          </HoverableLi>
+          <HoverableLi>
             <FaComments />
             Messages
-          </li>
-          <li className="flex items-center gap-2">
+          </HoverableLi>
+          <HoverableLi>
             <FaGear />
             Settings
-          </li>
+          </HoverableLi>
         </ul>
       </div>
     </div>
