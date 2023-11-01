@@ -1,9 +1,11 @@
 {
   "extends": [
     "next/core-web-vitals",
+    "plugin:react/recommended",
+    "plugin:react/jsx-runtime",
     "prettier"
   ],
-  "plugins": ["prettier"],
+  "plugins": ["react", "prettier"],
   "rules": {
     "prettier/prettier": ["warn"]
   },

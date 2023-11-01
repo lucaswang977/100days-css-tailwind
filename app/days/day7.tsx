@@ -30,7 +30,7 @@ const HoverableLi = ({
   className,
   children,
   ...rest
-}: React.ComponentPropsWithoutRef<"li">) => {
+}: JSX.IntrinsicElements["li"]) => {
   return (
     <li
       className={cn(
@@ -52,7 +52,7 @@ const Notification = ({
   children,
   time,
   ...rest
-}: { time: string } & React.ComponentPropsWithoutRef<"div">) => {
+}: { time: string } & JSX.IntrinsicElements["div"]) => {
   return (
     <div
       className={cn(
@@ -125,7 +125,8 @@ const Day7 = () => {
             "px-4",
           )}
         >
-          <div
+          <button
+            type="button"
             id="menu-icon"
             onClick={() => setShowNavbar((v) => !v)}
             className="group cursor-pointer"
@@ -135,6 +136,7 @@ const Day7 = () => {
               viewBox="0 0 100 100"
               xmlns="http://www.w3.org/2000/svg"
             >
+              <title>Drawer</title>
               <line
                 className={cn(
                   "stroke-[#B2DAFF] transition-colors",
@@ -169,7 +171,7 @@ const Day7 = () => {
                 strokeLinecap="round"
               />
             </svg>
-          </div>
+          </button>
           <div
             id="title"
             className={cn(
@@ -180,8 +182,9 @@ const Day7 = () => {
           >
             Notifications
           </div>
-          <div
+          <button
             id="search-icon"
+            type="button"
             onClick={() => setShowSearchBar((v) => !v)}
             className="group cursor-pointer"
           >
@@ -191,7 +194,7 @@ const Day7 = () => {
                 "transition-colors duration-200 ease-in-out",
               )}
             />
-          </div>
+          </button>
           <input
             id="search-bar"
             placeholder="Search ..."

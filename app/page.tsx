@@ -7,10 +7,11 @@ import Day4 from "@/days/day4"
 import Day5 from "@/days/day5"
 import Day6 from "@/days/day6"
 import Day7 from "@/days/day7"
+import Day8 from "@/days/day8"
 import { cn } from "@/helper/utils"
 import * as React from "react"
 
-const Days = [Day1, Day2, Day3, Day4, Day5, Day6, Day7]
+const Days = [Day1, Day2, Day3, Day4, Day5, Day6, Day7, Day8]
 
 function App() {
   return (

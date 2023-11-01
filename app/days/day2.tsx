@@ -85,10 +85,7 @@ const dangerouslyStyles = `
 }
 `
 
-const Line = ({
-  className,
-  ...rest
-}: React.ComponentPropsWithoutRef<"div">) => {
+const Line = ({ className, ...rest }: JSX.IntrinsicElements["div"]) => {
   return (
     <div
       className={cn(

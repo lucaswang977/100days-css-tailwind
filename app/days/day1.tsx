@@ -3,10 +3,7 @@
 import { cn } from "@/helper/utils"
 import React from "react"
 
-const BigZero = ({
-  className,
-  ...rest
-}: React.ComponentPropsWithoutRef<"div">) => {
+const BigZero = ({ className, ...rest }: JSX.IntrinsicElements["div"]) => {
   return (
     <>
       <div
@@ -24,10 +21,7 @@ const BigZero = ({
   )
 }
 
-const BigOne = ({
-  className,
-  ...rest
-}: React.ComponentPropsWithoutRef<"div">) => {
+const BigOne = ({ className, ...rest }: JSX.IntrinsicElements["div"]) => {
   return (
     <div className={cn(className)} {...rest}>
       <div
