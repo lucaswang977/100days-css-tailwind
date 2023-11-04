@@ -37,7 +37,7 @@ const Day8 = () => {
         )}
       >
         <style dangerouslySetInnerHTML={{ __html: dangerouslyStyles }} />
-        {Array.from(Array(2).keys()).map((i) => {
+        {Array.from(Array(1).keys()).map((i) => {
           return (
             <div
               key={`blubb-${i}`}
@@ -50,7 +50,7 @@ const Day8 = () => {
                 "after:h-[50px] after:w-[50px]",
                 "after:rounded-full",
                 "after:bg-white",
-                "after:origin-[(40 - $i * 3) + px (40 - $i * 3) + px]",
+                "after:origin-[37px_37px]",
                 "after:animation-[rotate_1s_ease-in-out_1s_infinite]",
                 "after:blur-[5px]",
               )}

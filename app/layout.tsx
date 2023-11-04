@@ -17,7 +17,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <main className="flex flex-col items-center justify-center">
+          <p className="mb-4 text-xl">
+            100 Days CSS Challenge implemented using Tailwind CSS
+          </p>
+          {children}
+        </main>
+      </body>
     </html>
   )
 }
