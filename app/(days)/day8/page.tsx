@@ -12,75 +12,100 @@ const dangerouslyStyles = `
 	}
 }
 `
+const Blubb = (props: { n: number }) => {
+  return (
+    <div
+      id={`blubb-${props.n}`}
+      style={{
+        transform: `rotate(${Math.floor(Math.random() * 300)}deg)`,
+      }}
+      className={cn("absolute", "left-[10px] top-[10px]", "h-[50px] w-[50px]")}
+    >
+      <div
+        style={{
+          transformOrigin: `${40 - props.n * 3}px ${40 - props.n * 3}px`,
+          animation: `rotate ${2.5 + props.n / 5}s ease-in-out ${
+            props.n / 5
+          }s infinite`,
+        }}
+        className={cn(
+          "absolute",
+          "block",
+          "h-[50px] w-[50px]",
+          "bg-white",
+          "rounded-full",
+          "blur-[5px]",
+        )}
+      ></div>
+    </div>
+  )
+}
+
+const Sparkle = (props: { n: number }) => {
+  return (
+    <div
+      id={`sparkle-${props.n}`}
+      style={{
+        width: `${7 + props.n}px`,
+        height: `${7 + props.n}px`,
+        transform: `rotate(${Math.floor(Math.random() * 300)}deg)`,
+      }}
+      className={cn("absolute", "left-[38px] top-[38px]")}
+    >
+      <div
+        style={{
+          width: `${7 + props.n}px`,
+          height: `${7 + props.n}px`,
+          transformOrigin: `${60 - props.n * 2}px ${60 - props.n * 2}px`,
+          animation: `rotate ${3.5 + props.n / 5}s ease-in-out ${
+            props.n / 5
+          }s infinite`,
+        }}
+        className={cn(
+          "absolute",
+          "block",
+          "bg-white",
+          "rounded-full",
+          "blur-[3px]",
+        )}
+      ></div>
+    </div>
+  )
+}
+
 const Day8 = () => {
   return (
     <div
       className={cn(
-        "relative",
-        "flex items-center justify-center",
+        "relative flex items-center justify-center",
         "h-[400px] w-[400px]",
         "rounded-sm",
         "text-[#786450]",
         "bg-black",
         "overflow-hidden",
         "shadow-[1px_2px_10px_0px_rgba(0,0,0,0.3)]",
-        "contrast-[25px]",
+        "contrast-[25]",
       )}
     >
       <style dangerouslySetInnerHTML={{ __html: dangerouslyStyles }} />
       <div
         id="ball"
         className={cn(
-          "relative",
+          "absolute",
+          "left-[50%] top-[50%] -translate-x-[50%] -translate-y-[50%]",
           "h-[90px] w-[90px]",
           "bg-white",
           "rounded-full",
-          "blur-0",
+          "blur-[15px]",
         )}
-      >
-        {Array.from(Array(1).keys()).map((i) => {
-          return (
-            <div
-              key={`blubb-${i}`}
-              id={`blubb-${i}`}
-              className={cn(
-                "absolute",
-                "left-[20px] top-[20px]",
-                "h-[50px] w-[50px]",
-                "after:content-[' ']",
-                "after:block",
-                "after:h-[50px] after:w-[50px]",
-                "after:rounded-full",
-                "after:bg-white",
-                "after:origin-[7px_7px]",
-                "after:animate-[rotate_ease-in-out_1s_infinite]",
-                "after:blur-5",
-              )}
-            ></div>
-          )
-        })}
-        {Array.from(Array(1).keys()).map((i) => {
-          return (
-            <div
-              key={`sparkle-${i}`}
-              id={`sparkle-${i}`}
-              className={cn(
-                "absolute",
-                "left-[38px] top-[38px]",
-                "h-[50px] w-[50px]",
-                "after:content-[' ']",
-                "after:absolute",
-                "after:block",
-                "after:h-[15px] after:w-[15px]",
-                "after:rounded-full",
-                "after:bg-white",
-                "after:origin-[37px_37px]",
-                "after:animate-[rotate_ease-in-out_1s_infinite]",
-                "after:blur-1",
-              )}
-            ></div>
-          )
-        })}
+      />
+      <div className={cn("relative", "h-[50px] w-[50px]")}>
+        {Array.from(Array(8).keys()).map((i) => (
+          <Blubb key={i} n={i} />
+        ))}
+        {Array.from(Array(10).keys()).map((i) => (
+          <Sparkle key={i} n={i} />
+        ))}
       </div>
     </div>
   )
